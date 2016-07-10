@@ -2,7 +2,7 @@
 # Browse local HTML files in a folder using "Previous" and "Next" buttons, like (for example) Windows Photo Viewer does for image files
 # Based on http://stackoverflow.com/a/8786346
 #
-# Edit "my_files" path below
+# Edit "my_files" path below, run and save output in .html file, and open it to start browsing
 #
 # _Very_ basic URL encoding implemented, as some browsers will not open the file instead
 
