@@ -1,0 +1,28 @@
+<script>
+function downloadURI(uri, name) {
+	var link = document.createElement("a");
+	link.download = name;
+	link.href = uri;
+	document.body.appendChild(link);
+	link.click();
+	document.body.removeChild(link);
+	delete link;
+}
+
+function clickHandler() {
+	var list = document.getElementsByTagName("a");
+	for (var i = 0; i < list.length; i++) {
+		var href = list[i].href;
+		if (typeof href === "undefined") {
+			console.log("undefined");
+		} else {
+			if (href.includes("Attachments")) {
+				console.log(href);
+				downloadURI(href, href.split('/').pop());
+			}
+		}
+	}
+}
+</script>
+
+<input id="downloadAll" type="button" onclick="clickHandler()" value="Download all attachments"/>
