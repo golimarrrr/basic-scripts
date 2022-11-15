@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Antipode finder</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+
+	
+</head>
+<body>
+
+
+      <label for="latitude1">Latitude:</label>
+      <input id="latitude1" type="text" />
+      <label for="longitude1">Longitude:</label>
+      <input id="longitude1" type="text" />
+		<div id="map1" style="width: 600px; height: 400px;"></div>
+		
+	  <label for="latitude2">Latitude:</label>
+      <input id="latitude2" type="text" />
+      <label for="longitude2">Longitude:</label>
+      <input id="longitude2" type="text" />
+		<div id="map2" style="width: 600px; height: 400px;"></div>
+
+<script>
+
+	// map, view, zoom level (x2)
+	const map1 = L.map('map1').setView([51.505, -0.09], 4);
+	const map2 = L.map('map2').setView([51.505, -0.09], 4);
+
+	// tiles (x2)
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map1);
+	const tiles2 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map2);
+
+	// marker (x2)
+	const marker1 = L.marker([51.5, -0.09],{ draggable: true }).addTo(map1);
+	const marker2 = L.marker([51.5, -0.09]).addTo(map2);
+
+	// when marker in map1 is moved, calculate new antipodes and move marker in map2 to those antipodes, also center map2 arount the new antipodes
+	marker1.on('dragend', function (e) {
+		document.getElementById('latitude1').value = marker1.getLatLng().lat;
+		document.getElementById('longitude1').value = marker1.getLatLng().lng;
+		oppositeLat = -marker1.getLatLng().lat;
+		oppositeLon = marker1.getLatLng().lng+180;
+		marker2.setLatLng([oppositeLat,oppositeLon]);
+		map2.setView(marker2.getLatLng());
+		document.getElementById('latitude2').value = oppositeLat;
+		document.getElementById('longitude2').value = oppositeLon;
+	});
+	
+	// sync zoom of both maps
+	map1.on('zoomend', function(e) { map2.setZoom(map1.getZoom());	});
+	map2.on('zoomend', function(e) { map1.setZoom(map2.getZoom());	});
+	
+
+</script>
+
+
+
+</body>
+</html>
