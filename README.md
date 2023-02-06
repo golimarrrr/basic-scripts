@@ -9,3 +9,8 @@
 
 
 ![image](https://user-images.githubusercontent.com/3762732/201923461-68f7ea4e-883f-4fce-97a1-8f0be105a841.png)
+
+* **youtube_cmd.sh**: command line youtube player, using ddgr + youtube-dl + mpv:
+
+
+![image](youtube_cmd.gif)
