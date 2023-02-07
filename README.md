@@ -13,4 +13,5 @@
 * **youtube_cmd.sh**: command line youtube player, using ddgr + youtube-dl + mpv:
 
 
-![image](youtube_cmd.gif)
+
+![youtube_cmd](https://user-images.githubusercontent.com/3762732/217211169-ae9f6392-9eb0-4b94-b71a-9d9d617f225a.gif)
