@@ -13,5 +13,6 @@
 * **youtube_cmd.sh**: command line youtube player, using ddgr + youtube-dl + mpv:
 
 
-
 ![youtube_cmd](https://user-images.githubusercontent.com/3762732/217211169-ae9f6392-9eb0-4b94-b71a-9d9d617f225a.gif)
+
+* **diffxlsx.sh**: like `diff` but for Excel files. Converts them to CSV with `xlsx2csv` and diffs them. Useful for files with few differences, for example to check what was changed between two versions of the same file
