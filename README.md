@@ -1,6 +1,9 @@
 # basic-scripts
 
-* **zmd5sum.sh**: returns md5sum of the uncompressed content of gzip files
+* **zmd5sum.sh**: returns md5sum of the uncompressed content of gzip files, useful as 2 identical files produce 2 different gzipped files:
+
+![image](https://user-images.githubusercontent.com/3762732/228513315-6ca93f2e-5c42-448a-955d-941a6eace5e6.png)
+
 * **html_file_browser.sh**: browse local HTML files in a folder using "Previous" and "Next" buttons, like what (for example) Windows Photo Viewer does for image files
 * **dokuwiki2redmine.pl**: _really_ basic DokuWiki (MediaWiki) to Redmine (Textile) converter
 * **downloadAllSharepointListAttachments.html**: in SharePoint lists with attachments, by default you can open or download only one at a time. With this HTML+JS code, you can create a "Download all attachments" button: add a Content Editor webpart, click Edit Source and insert this code inside
